@@ -125,6 +125,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	}
 
+	$.getJSON(base_url+"assets/geojson/map.geojson", function(data){
+		getLayer = L.geoJson(data, {
+			style: function(feature) {
+				return {
+							fillOpacity: 0.3,
+							weight: 1,
+							opacity: 1,
+							color: "f44242"
+
+
+
+				};
+			},
+
+			onEachFeature: function(feature, layer){
+				var latt = parseFloat(feature.properties.latitude);
+
+			}
+
+		}).addTo(map);
+    }); 
+
 	
     
   </script>
