@@ -124,6 +124,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		alert("Clicked on marker" + event.layer.id);
 
 	}
+	//menggunakan geojson untuk menandai suatu daerah
 
 	$.getJSON(base_url+"assets/geojson/map.geojson", function(data){
 		getLayer = L.geoJson(data, {
