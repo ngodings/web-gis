@@ -127,17 +127,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	//menggunakan geojson untuk menandai suatu daerah
 
 	$.getJSON(base_url+"assets/geojson/map.geojson", function(data){
+		//untuk konfigurasi tampilan map mark atau multi polygon
 		getLayer = L.geoJson(data, {
 			style: function(feature) {
-				return {
-							fillOpacity: 0.3,
+
+				//membedakan multi polygon
+				var kategori = feature.properties.kategori;
+				if (kategori == 1){
+					return { //daerah satu
+							fillOpacity: 0.1,
 							weight: 1,
 							opacity: 1,
 							color: "f44242"
+						};
+				}else if(kategori == 2){
+					return { //daerah dua
+							fillOpacity: 0.1,
+							weight: 1,
+							opacity: 1,
+							color: "DEB887"
+						};
 
+				}else{
+					return { //daerah tiga
+							fillOpacity: 0.1,
+							weight: 1,
+							opacity: 1,
+							color: "DCDCDC"
+						};
 
+				}
 
-				};
+				
 			},
 
 			onEachFeature: function(feature, layer){
