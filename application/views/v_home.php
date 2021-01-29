@@ -142,18 +142,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						};
 				}else if(kategori == 2){
 					return { //daerah dua
-							fillOpacity: 0.1,
+							fillOpacity: 0.5,
 							weight: 1,
 							opacity: 1,
-							color: "DEB887"
+							color: "6d96f7"
 						};
 
 				}else{
 					return { //daerah tiga
-							fillOpacity: 0.1,
+							fillOpacity: 0.8,
 							weight: 1,
 							opacity: 1,
-							color: "DCDCDC"
+							color: "6d96f7"
 						};
 
 				}
