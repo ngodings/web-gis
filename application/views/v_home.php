@@ -129,12 +129,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$.getJSON(base_url+"assets/geojson/map.geojson", function(data){
 		//untuk konfigurasi tampilan map mark atau multi polygon
 		getLayer = L.geoJson(data, {
-			style: function(feature) {
+			style: function(feature, layer) {
 
 				//membedakan multi polygon
 				var kategori = feature.properties.kategori;
 				if (kategori == 1){
 					return { //daerah satu
+						
 							fillOpacity: 0.1,
 							weight: 1,
 							opacity: 1,
@@ -160,10 +161,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				
 			},
-
+			//untuk setiap bidang menambahkan layer
 			onEachFeature: function(feature, layer){
-				var latt = parseFloat(feature.properties.latitude);
+				// mendapatkan kode
+				var kode = parseFloat(feature.properties.kode);
+				//var info_bidang = "hello senin"+kode;
+				var info_bidang ="<h5 style='text-align:center'>INFO BIDANG</h5>";
+					info_bidang+="<a href='<?=base_url()?>home/bidang_detail/'"+kode+"'><img src='https://bulelengkab.go.id/assets/instansikab/71/artikel/integrasi-dan-tekstual-dan-spasial-lahan-pertanian-pangan-berkelanjutan-lp2b-32.jpg' alt='maptime logo' height='180px' width='230px'/></a>";
+					info_bidang+="<div style='width:100%;text-align:center;margin-top:10px;'><a href='<?=base_url()?>home/bidang_detail/"+kode+"'> Detail </a></div>";
+				layer.bindPopup(info_bidang, {
+					maxWidth : 260,
+					closeButton : true,
+					offset : L.point(0, -20)
+				});
 
+				layer.on('click', function(){
+					layer.openPopup();
+				});
+
+				
 			}
 
 		}).addTo(map);
