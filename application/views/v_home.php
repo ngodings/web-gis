@@ -82,6 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script type="text/javascript">
 	$('#test').BootSideMenu({side:"left", autoClose:false});
 	
+	//menampilkan map
 	var map = L.map('mapid').setView([-7.5595759, 110.8541984], 13);
 	var base_url ="<?= base_url() ?>";
 	
@@ -139,14 +140,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							fillOpacity: 0.1,
 							weight: 1,
 							opacity: 1,
-							color: "f44242"
+							color: "#f44242"
 						};
 				}else if(kategori == 2){
 					return { //daerah dua
 							fillOpacity: 0.5,
 							weight: 1,
 							opacity: 1,
-							color: "6d96f7"
+							color: "#6d96f7"
 						};
 
 				}else{
@@ -154,7 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							fillOpacity: 0.8,
 							weight: 1,
 							opacity: 1,
-							color: "6d96f7"
+							color: "#6d96f7"
 						};
 
 				}

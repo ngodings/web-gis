@@ -29,4 +29,11 @@ class Home extends CI_Controller {
 		$data=$this->db->limit(1)->get_where('bidang', array('bidang_kode'=>$kode))->row()->bidang_foto;
 		echo json_encode($data);
 	}
+	
+	public function bidang_detail($kode=null){
+		$data['kode'] = $kode;
+		$data['bidang'] = $this->db->get_where('bidang', array('bidang_kode'=>$kode))->result();
+		$data['dok']= $this->db->get_where('dokumentasi', array('bidang_kode'=>$kode))->result();
+		$this->load->view('v_detail', $data);
+	}
 }
