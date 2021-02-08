@@ -91,6 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
 
+	//marker manual
 	var myFeatureGroup = L.featureGroup().addTo(map).on("click", groupClick);
 	var bangunanMarker;
 
